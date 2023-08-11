@@ -10,7 +10,7 @@ function SpaceProductsComponent({ allProducts }) {
         flexDirection: "row",
         justifyContent: "center",
         gap: "2rem",
-        margin: "2rem",
+        margin: "8rem 2rem",
       }}
     >
       {allProducts.products.length > 0 ? (

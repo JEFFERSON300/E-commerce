@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ServiceAPI } from "../../services/Products.service";
 import SpaceProductsComponent from "../../Components/SpaceProducts/SpaceProducts.component";
+import NavBarComponent from "../../Components/NavBar/NavBar.component";
 
 export const ProductsPage = () => {
   const [products, setProducts] = useState(null);
@@ -13,8 +14,11 @@ export const ProductsPage = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
-      {products && <SpaceProductsComponent allProducts={products} />}
+    <div>
+      <NavBarComponent />
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        {products && <SpaceProductsComponent allProducts={products} />}
+      </div>
     </div>
   );
 };
