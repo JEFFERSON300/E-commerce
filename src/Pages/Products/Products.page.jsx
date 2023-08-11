@@ -5,6 +5,11 @@ import NavBarComponent from "../../Components/NavBar/NavBar.component";
 
 export const ProductsPage = () => {
   const [products, setProducts] = useState(null);
+  const [cart, setCart] = useState([]);
+
+  const callback = (payload) => {
+    setCart((arr) => [...arr, payload]);
+  };
 
   useEffect(() => {
     (async () => {
@@ -17,7 +22,9 @@ export const ProductsPage = () => {
     <div>
       <NavBarComponent />
       <div style={{ display: "flex", flexDirection: "row" }}>
-        {products && <SpaceProductsComponent allProducts={products} />}
+        {products && (
+          <SpaceProductsComponent allProducts={products} callback={callback} />
+        )}
       </div>
     </div>
   );

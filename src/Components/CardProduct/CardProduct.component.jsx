@@ -5,10 +5,18 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import PropTypes from "prop-types";
 
-export default function CardProductComponent({ image, price, description }) {
+export default function CardProductComponent({
+  image,
+  price,
+  description,
+  callback,
+  id,
+}) {
+  const handleCallBack = () => callback(id);
+
   return (
     <Card sx={{ maxWidth: 300 }}>
-      <CardActionArea>
+      <CardActionArea onClick={handleCallBack}>
         <CardMedia component="img" height={300} image={image} alt="" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -27,4 +35,6 @@ CardProductComponent.propTypes = {
   image: PropTypes.string,
   price: PropTypes.number,
   description: PropTypes.string,
+  callback: PropTypes.func,
+  id: PropTypes.number,
 };
