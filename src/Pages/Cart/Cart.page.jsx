@@ -1,7 +1,10 @@
+import NavBarCartComponent from "../../Components/NavBarCart/NavBarCart.component";
+
 export const CartPage = () => {
-    return (
-        <>
-            <p>CartPage Render</p>
-        </>
-    )
-}
+  return (
+    <>
+      <NavBarCartComponent />
+      <p>CartPage Render</p>
+    </>
+  );
+};

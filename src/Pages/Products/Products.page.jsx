@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ServiceAPI } from "../../services/Products.service";
 import SpaceProductsComponent from "../../Components/SpaceProducts/SpaceProducts.component";
 import NavBarComponent from "../../Components/NavBar/NavBar.component";
@@ -26,6 +26,7 @@ export const ProductsPage = () => {
           <SpaceProductsComponent allProducts={products} callback={callback} />
         )}
       </div>
+      <p>Itens no carrinho:{cart && cart.length}</p>
     </div>
   );
 };
