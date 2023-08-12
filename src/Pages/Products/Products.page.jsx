@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { ServiceAPI } from "../../services/Products.service";
 import SpaceProductsComponent from "../../Components/SpaceProducts/SpaceProducts.component";
 import NavBarComponent from "../../Components/NavBar/NavBar.component";
+import { useContext } from "react";
+import { CartContext } from "../../context/Cart.context";
 
 export const ProductsPage = () => {
   const [products, setProducts] = useState(null);
-  const [cart, setCart] = useState([]);
+  const { productsCart, setProductsCart } = useContext(CartContext);
 
   const callback = (payload) => {
-    setCart((arr) => [...arr, payload]);
+    setProductsCart((arr) => [...arr, payload]);
   };
 
   useEffect(() => {
@@ -20,13 +22,14 @@ export const ProductsPage = () => {
 
   return (
     <div>
-      <NavBarComponent itemCount={cart.length > 0 ? cart.length : null} />
+      <NavBarComponent
+        itemCount={productsCart.length > 0 ? productsCart.length : null}
+      />
       <div style={{ display: "flex", flexDirection: "row" }}>
         {products && (
           <SpaceProductsComponent allProducts={products} callback={callback} />
         )}
       </div>
-      <p>Itens no carrinho:{cart && cart.length}</p>
     </div>
   );
 };
