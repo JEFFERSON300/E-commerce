@@ -1,17 +1,21 @@
 import NavBarCartComponent from "../../Components/NavBarCart/NavBarCart.component";
 import { TestCartComponent } from "../../Components/testeCart/testCart.component";
 import PropTypes from "prop-types";
-import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/Cart.context";
 
 export const CartPage = () => {
-  const location = useLocation();
-  const fromProductPage = location.state?.fromProductPage;
+  const { productsCart } = useContext(CartContext);
 
   return (
     <>
-      <NavBarCartComponent itemCount={fromProductPage} />
+      <NavBarCartComponent itemCount={productsCart.length} />
       <TestCartComponent />
-      {console.log(fromProductPage)}
+      <Link style={{ textDecoration: "none" }} to={"/produtos"}>
+        <button style={{ marginTop: "5rem" }}>Continuar Comprando</button>
+      </Link>
+      <p>Produtos no carrinho:{productsCart.length}</p>
     </>
   );
 };

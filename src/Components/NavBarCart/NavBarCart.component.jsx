@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 function NavBarCartComponent({ itemCount }) {
   return (
-    <Navbar bg="primary" data-bs-theme="dark" fixed="top" expand="lg">
+    <Navbar className="bg-body-tertiary" fixed="top" expand="lg">
       <Container fluid>
         <Navbar.Brand style={{ marginLeft: "2rem" }}>
           <img
