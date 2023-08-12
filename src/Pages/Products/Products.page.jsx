@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { ServiceAPI } from "../../services/Products.service";
 import SpaceProductsComponent from "../../Components/SpaceProducts/SpaceProducts.component";
 import NavBarComponent from "../../Components/NavBar/NavBar.component";
@@ -20,7 +20,7 @@ export const ProductsPage = () => {
 
   return (
     <div>
-      <NavBarComponent />
+      <NavBarComponent itemCount={cart.length > 0 ? cart.length : null} />
       <div style={{ display: "flex", flexDirection: "row" }}>
         {products && (
           <SpaceProductsComponent allProducts={products} callback={callback} />

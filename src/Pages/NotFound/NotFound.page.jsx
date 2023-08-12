@@ -1,7 +1,9 @@
+import { TestCartComponent } from "../../Components/testeCart/testCart.component";
+
 export const NotFoundPage = () => {
-    return (
-        <>
-            <p>NotFoundPage Render</p>
-        </>
-    )
-}
+  return (
+    <>
+      <TestCartComponent />
+    </>
+  );
+};

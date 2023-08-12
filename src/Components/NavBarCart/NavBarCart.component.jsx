@@ -1,12 +1,14 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
+import PropTypes from "prop-types";
 
-function NavBarCartComponent() {
+function NavBarCartComponent({ itemCount }) {
   return (
-    <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
+    <Navbar bg="primary" data-bs-theme="dark" fixed="top" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand style={{ marginLeft: "2rem" }}>
           <img
             alt=""
             src="logo.png"
@@ -16,12 +18,17 @@ function NavBarCartComponent() {
           />{" "}
         </Navbar.Brand>
 
-        <Navbar.Brand href="#">
-          <AiOutlineShoppingCart size={"3rem"} />
+        <Navbar.Brand style={{ marginRight: "2rem" }}>
+          <Badge color="secondary" badgeContent={itemCount}>
+            <ShoppingCartIcon fontSize="large" />{" "}
+          </Badge>
         </Navbar.Brand>
       </Container>
     </Navbar>
   );
 }
 
+NavBarCartComponent.propTypes = {
+  itemCount: PropTypes.number,
+};
 export default NavBarCartComponent;
