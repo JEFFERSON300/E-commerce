@@ -9,6 +9,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function CardCartProductComponent({
   image,
@@ -27,7 +28,7 @@ export default function CardCartProductComponent({
           alignItems: "center",
           marginLeft: "2rem",
         }}
-        sx={{ maxWidth: "60%" }}
+        sx={{ width: "90%" }}
       >
         <CardMedia
           sx={{ width: "20%" }}
@@ -42,7 +43,16 @@ export default function CardCartProductComponent({
           </Typography>
         </CardContent>
 
-        <div style={{ width: "15%" }}>
+        <div
+          style={{
+            width: "15%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "start",
+            gap: "center",
+          }}
+        >
           <ButtonGroup>
             <Button
               onClick={() => {
@@ -52,7 +62,11 @@ export default function CardCartProductComponent({
               {" "}
               <RemoveIcon fontSize="small" />
             </Button>
-            <TextField sx={{ width: "30%" }} size={"small"} value={itemCount} />
+            <TextField
+              sx={{ width: "46px" }}
+              size={"small"}
+              value={itemCount}
+            />
             <Button
               onClick={() => {
                 setItemCount(itemCount + 1);
@@ -62,6 +76,9 @@ export default function CardCartProductComponent({
               <AddIcon fontSize="small" />
             </Button>
           </ButtonGroup>
+          <Button style={{ border: "none" }}>
+            <DeleteIcon />
+          </Button>
         </div>
         <CardContent sx={{ width: "20%" }}>
           <Typography gutterBottom variant="h5" component="div">
