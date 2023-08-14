@@ -5,7 +5,33 @@ import Typography from "@mui/material/Typography";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const CardSumProductsComponent = () => {
+export const CardSumProductsComponent = ({ productsCart, allProducts }) => {
+  const getNumberItens = () => {
+    const countMoreOneProduct = {};
+
+    productsCart.forEach((element) => {
+      countMoreOneProduct[element] = (countMoreOneProduct[element] || 0) + 1;
+    });
+
+    let informationProductsCart = [];
+    let numberItens = [];
+
+    Object.keys(countMoreOneProduct).forEach(showCartProducts);
+
+    function showCartProducts(key) {
+      const tempNumberItens = countMoreOneProduct[key];
+      numberItens.push(tempNumberItens);
+      const tempProduct = allProducts.products.find((item) => item.id == key);
+      informationProductsCart.push(tempProduct);
+    }
+    let totalPrice = 0;
+    numberItens.map(
+      (x, index) =>
+        (totalPrice = totalPrice + x * informationProductsCart[index].price)
+    );
+    return <> {totalPrice}</>;
+  };
+
   return (
     <>
       <Card
@@ -17,7 +43,8 @@ export const CardSumProductsComponent = () => {
             Resumo da Compra
           </Typography>
           <Typography gutterBottom variant="h6" component="div">
-            Total
+            Total USD
+            {productsCart.length > 0 ? getNumberItens() : null}
           </Typography>
         </CardContent>
 
@@ -47,4 +74,9 @@ export const CardSumProductsComponent = () => {
       </Card>
     </>
   );
+};
+
+CardSumProductsComponent.propTypes = {
+  productsCart: PropTypes.array,
+  allProducts: PropTypes.object,
 };

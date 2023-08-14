@@ -10,6 +10,25 @@ export const CartPage = () => {
   const [products, setProducts] = useState();
   const { productsCart, setProductsCart } = useContext(CartContext);
 
+  const callback = (id, numberItems, itemsCount) => {
+    if (itemsCount < numberItems) {
+      let remove = id;
+      let cont = 0;
+      for (let i = productsCart.length - 1; i >= 0; i--) {
+        if (productsCart[i] === remove) {
+          productsCart.splice(i, 1);
+          cont = cont + 1;
+          if (cont === numberItems - itemsCount) {
+            setProductsCart((arr) => [...arr]);
+            break;
+          }
+        }
+      }
+    } else {
+      setProductsCart((arr) => [...arr, id]);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       const res = await ServiceAPI.GetpProducts();
@@ -26,12 +45,19 @@ export const CartPage = () => {
             <SpaceCartProductsComponents
               productsCart={productsCart}
               allProducts={products}
+              callback={callback}
             />
           )}
         </div>
         <div style={{ width: "25vw", height: "100vh" }}>
-          <CardSumProductsComponent />
+          {productsCart && products && (
+            <CardSumProductsComponent
+              productsCart={productsCart}
+              allProducts={products}
+            />
+          )}
         </div>
+        {console.log(productsCart)}
       </div>
     </>
   );

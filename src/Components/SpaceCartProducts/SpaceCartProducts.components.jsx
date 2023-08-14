@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 import CardCartProductComponent from "../CardCartProduct/CardCartProduct.component";
 
-export const SpaceCartProductsComponents = ({ productsCart, allProducts }) => {
+export const SpaceCartProductsComponents = ({
+  productsCart,
+  allProducts,
+  callback,
+}) => {
   const getNumberItens = () => {
     const countMoreOneProduct = {};
 
@@ -33,6 +37,8 @@ export const SpaceCartProductsComponents = ({ productsCart, allProducts }) => {
                 price={informationProductsCart[i].price}
                 description={informationProductsCart[i].description}
                 numberItens={numberItens[i]}
+                id={informationProductsCart[i].id}
+                callback={callback}
               />
             ))}
       </>
@@ -57,4 +63,5 @@ export const SpaceCartProductsComponents = ({ productsCart, allProducts }) => {
 SpaceCartProductsComponents.propTypes = {
   allProducts: PropTypes.object,
   productsCart: PropTypes.array,
+  callback: PropTypes.func,
 };

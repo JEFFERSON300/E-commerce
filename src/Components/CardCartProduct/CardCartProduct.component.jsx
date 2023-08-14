@@ -6,18 +6,28 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import { useState } from "react";
 import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useState, useEffect } from "react";
 
 export default function CardCartProductComponent({
   image,
   price,
   description,
   numberItens,
+  id,
+  callback,
 }) {
   const [itemCount, setItemCount] = useState(numberItens);
+
+  useEffect(() => {
+    numberItens != itemCount ? handleCallBack() : null;
+  }, [itemCount]);
+
+  const handleCallBack = () => {
+    callback(id, numberItens, itemCount);
+  };
 
   return (
     <>
@@ -95,4 +105,6 @@ CardCartProductComponent.propTypes = {
   price: PropTypes.number,
   description: PropTypes.string,
   numberItens: PropTypes.number,
+  id: PropTypes.number,
+  callback: PropTypes.func,
 };
