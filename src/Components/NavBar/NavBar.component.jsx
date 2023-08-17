@@ -37,6 +37,8 @@ function NavBarComponent({ itemCount }) {
             size="lg"
           />
           <button
+            name="searchProducts"
+            type="button"
             style={{
               border: "solid 1px #DEE2E6",
               borderTopRightRadius: "10px",
