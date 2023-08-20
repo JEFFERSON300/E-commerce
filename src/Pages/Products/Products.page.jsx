@@ -22,9 +22,13 @@ export const ProductsPage = () => {
 
   return (
     <div>
-      <NavBarComponent
-        itemCount={productsCart.length > 0 ? productsCart.length : null}
-      />
+      {products && (
+        <NavBarComponent
+          itemCount={productsCart.length > 0 ? productsCart.length : null}
+          allProducts={products}
+        />
+      )}
+
       <div style={{ display: "flex", flexDirection: "row" }}>
         {products && (
           <SpaceProductsComponent allProducts={products} callback={callback} />

@@ -6,10 +6,27 @@ import Badge from "@mui/material/Badge";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-function NavBarComponent({ itemCount }) {
-  const change = (event) => {
-    const nameSeacrh = event.target.value;
-  };
+import { useState, useEffect } from "react";
+
+function NavBarComponent({ itemCount, allProducts }) {
+  const [itemsSearch, setItemsSearch] = useState("");
+  const [search, setSearch] = useState("");
+
+  console.log(itemsSearch);
+  console.log(search);
+
+  useEffect(() => {
+    // const itemFind = itemsSearch.filter((product) => product(search));
+
+    console.log(Object.entries(itemsSearch));
+  }, [search]);
+
+  useEffect(() => {
+    const titleProducts = allProducts.products.map((item) => {
+      return item.title;
+    });
+    setItemsSearch(titleProducts);
+  }, []);
 
   return (
     <Navbar fixed="top" expand="lg" className="bg-body-tertiary">
@@ -30,7 +47,7 @@ function NavBarComponent({ itemCount }) {
               borderTopRightRadius: "0",
               borderBottomRightRadius: "0px",
             }}
-            onChange={change}
+            onChange={(event) => setSearch(event.target.value)}
             type="search"
             placeholder="Filtrar Produtos"
             aria-label="Search"
@@ -63,5 +80,7 @@ function NavBarComponent({ itemCount }) {
 
 NavBarComponent.propTypes = {
   itemCount: PropTypes.number,
+  allProducts: PropTypes.object,
 };
+
 export default NavBarComponent;
