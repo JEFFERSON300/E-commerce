@@ -25,6 +25,10 @@ export default function CardCartProductComponent({
     numberItens != itemCount ? handleCallBack() : null;
   }, [itemCount]);
 
+  const deleteCallBack = () => {
+    callback(id, numberItens, 0);
+  };
+
   const handleCallBack = () => {
     callback(id, numberItens, itemCount);
   };
@@ -86,7 +90,12 @@ export default function CardCartProductComponent({
               <AddIcon fontSize="small" />
             </Button>
           </ButtonGroup>
-          <Button style={{ border: "none" }}>
+          <Button
+            onClick={() => {
+              deleteCallBack();
+            }}
+            style={{ border: "none" }}
+          >
             <DeleteIcon />
           </Button>
         </div>
