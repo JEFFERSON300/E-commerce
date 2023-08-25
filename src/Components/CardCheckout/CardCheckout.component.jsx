@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import PropTypes from "prop-types";
 import CardMedia from "@mui/material/CardMedia";
 
-export const CardCheckoutComponent = ({ name, option }) => {
+export default function CardCheckoutComponent({ name, option }) {
   if (option === 1 || option === 2) {
     return (
       <div>
@@ -135,7 +135,7 @@ export const CardCheckoutComponent = ({ name, option }) => {
       </div>
     );
   }
-};
+}
 
 CardCheckoutComponent.propTypes = {
   name: PropTypes.string,

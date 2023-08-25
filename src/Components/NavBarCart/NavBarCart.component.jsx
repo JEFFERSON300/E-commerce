@@ -4,7 +4,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import PropTypes from "prop-types";
 
-function NavBarCartComponent({ itemCount }) {
+export default function NavBarCartComponent({ itemCount }) {
   return (
     <Navbar className="bg-body-tertiary" fixed="top" expand="lg">
       <Container fluid>
@@ -31,4 +31,3 @@ function NavBarCartComponent({ itemCount }) {
 NavBarCartComponent.propTypes = {
   itemCount: PropTypes.number,
 };
-export default NavBarCartComponent;

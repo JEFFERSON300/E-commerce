@@ -5,7 +5,10 @@ import Typography from "@mui/material/Typography";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const CardSumProductsComponent = ({ productsCart, allProducts }) => {
+export default function CardSumProductsComponent({
+  productsCart,
+  allProducts,
+}) {
   const getNumberItens = () => {
     const countMoreOneProduct = {};
 
@@ -74,7 +77,7 @@ export const CardSumProductsComponent = ({ productsCart, allProducts }) => {
       </Card>
     </>
   );
-};
+}
 
 CardSumProductsComponent.propTypes = {
   productsCart: PropTypes.array,

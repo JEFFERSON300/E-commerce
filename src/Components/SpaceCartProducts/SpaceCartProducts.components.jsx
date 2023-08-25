@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import CardCartProductComponent from "../CardCartProduct/CardCartProduct.component";
 
-export const SpaceCartProductsComponents = ({
+export default function SpaceCartProductsComponents({
   productsCart,
   allProducts,
   callback,
-}) => {
+}) {
   const getNumberItens = () => {
     const countMoreOneProduct = {};
 
@@ -58,7 +58,7 @@ export const SpaceCartProductsComponents = ({
       {productsCart.length > 0 ? getNumberItens() : <p>Nenhum Produto</p>}
     </div>
   );
-};
+}
 
 SpaceCartProductsComponents.propTypes = {
   allProducts: PropTypes.object,

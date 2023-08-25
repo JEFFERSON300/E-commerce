@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState, useEffect } from "react";
 
-function NavBarComponent({ itemCount, allProducts }) {
+export default function NavBarComponent({ itemCount, allProducts }) {
   const [itemsSearch, setItemsSearch] = useState("");
   const [search, setSearch] = useState("");
 
@@ -82,5 +82,3 @@ NavBarComponent.propTypes = {
   itemCount: PropTypes.number,
   allProducts: PropTypes.object,
 };
-
-export default NavBarComponent;

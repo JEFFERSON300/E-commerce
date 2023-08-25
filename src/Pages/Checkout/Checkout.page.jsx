@@ -5,7 +5,7 @@ import { CartContext } from "../../context/Cart.context";
 import { ServiceAPI } from "../../services/Products.service";
 import { useEffect, useState, useContext } from "react";
 
-export const CheckoutPage = () => {
+export default function CheckoutPage() {
   const { productsCart, setProductsCart } = useContext(CartContext);
   const [products, setProducts] = useState();
 
@@ -102,4 +102,4 @@ export const CheckoutPage = () => {
       </div>
     </>
   );
-};
+}
